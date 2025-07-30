@@ -9,7 +9,7 @@ target_links = []
 
 def extract_links(url):
     response = requests.get(url)
-    return re.findall('(?:href=")(.*?)"', str(response.content))
+    return re.findall('(?:href=")(.*?)"', str(response.content.decode(errors="ignore")))
 
 def crawl(url):
     href_links = extract_links(url)
